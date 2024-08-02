@@ -1,6 +1,10 @@
 import express from 'express'
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import cors from 'cors'
+import helmet from 'helmet'
+import dotevn from 'dotenv';
+dotevn.config()
 
 import HomeRoutes from './src/routes/HomeRoutes.js'
 import userRoutes from './src/routes/UserRoutes.js'
@@ -13,6 +17,20 @@ import './src/database/index.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const whiteList = {
+  dominio1: process.env.DOMINIO_1,
+}
+
+const corsOptions = {
+  origin: function (origin, calback) {
+    if(whiteList.dominio1.indexOf(origin) !== -1){
+      calback(null, true)
+    }else{
+      calback(new Error('not is allowed by cors'))
+    }
+  }
+}
+
 class App{
   constructor(){
     this.app = express()
@@ -21,6 +39,8 @@ class App{
   }
 
   middleware(){
+    this.app.use(cors(corsOptions))
+    this.app.use(helmet())
     this.app.use(express.urlencoded({extended:true}))
     this.app.use(express.json())
     this.app.use(express.static(resolve(__dirname, 'uploads')))
