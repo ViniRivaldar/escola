@@ -17,19 +17,19 @@ import './src/database/index.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const whiteList = {
-  dominio1:"http://192.168.10.2:3000",
-}
+const whiteList = [
+  "http://192.168.10.2:3000",
+]
 
 const corsOptions = {
-  origin: function (origin, calback) {
-    if(whiteList.dominio1 === origin){
-      calback(null, true)
-    }else{
-      calback(new Error('not is allowed by cors'))
+  origin: function (origin, callback) {
+    if(whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
   }
-}
+};
 
 class App{
   constructor(){
