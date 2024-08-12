@@ -12,7 +12,7 @@ import tokenRoutes from './src/routes/TokenRoutes.js'
 import alunoRoutes from './src/routes/AlunoRoutes.js'
 import FotoRoutes from './src/routes/FotoRoutes.js'
 
-import './src/database/index.js'
+import './src/database/index.js' 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
