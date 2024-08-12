@@ -17,19 +17,19 @@ import './src/database/index.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// const whiteList = {
-//   dominio1: process.env.DOMINIO_1,
-// }
+const whiteList = {
+  dominio1:"http://localhost:3000",
+}
 
-// const corsOptions = {
-//   origin: function (origin, calback) {
-//     if(whiteList.dominio1.indexOf(origin) !== -1){
-//       calback(null, true)
-//     }else{
-//       calback(new Error('not is allowed by cors'))
-//     }
-//   }
-// }
+const corsOptions = {
+  origin: function (origin, calback) {
+    if(whiteList.dominio1(origin) !== -1){
+      calback(null, true)
+    }else{
+      calback(new Error('not is allowed by cors'))
+    }
+  }
+}
 
 class App{
   constructor(){
@@ -39,8 +39,8 @@ class App{
   }
 
   middleware(){
-    // this.app.use(cors(corsOptions))
-    this.app.use(cors())
+    this.app.use(cors(corsOptions))
+    // this.app.use(cors())
     this.app.use(helmet( {contentSecurityPolicy: false,}))
     this.app.use(express.urlencoded({extended:true}))
     this.app.use(express.json())
