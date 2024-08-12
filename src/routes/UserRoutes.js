@@ -8,7 +8,7 @@ const router = new Router()
 // router.get('/', userController.index)
 // router.get('/:id', userController.show)
 
-router.post('/', LoguinRequired, userController.store)
+router.post('/', userController.store)
 router.put('/', LoguinRequired, userController.update)
 router.delete('/', LoguinRequired, userController.delete)
 
