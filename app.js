@@ -23,7 +23,7 @@ const whiteList = {
 
 const corsOptions = {
   origin: function (origin, calback) {
-    if(whiteList.dominio1(origin) !== -1){
+    if(whiteList.dominio1 === origin){
       calback(null, true)
     }else{
       calback(new Error('not is allowed by cors'))
