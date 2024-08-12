@@ -18,7 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const whiteList = {
-  dominio1:"http://localhost:3000",
+  dominio1:"http://192.168.10.2:3000",
 }
 
 const corsOptions = {
