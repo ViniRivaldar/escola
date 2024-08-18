@@ -20,7 +20,8 @@ const __dirname = dirname(__filename);
 const whiteList = [
   "http://192.168.10.2:3000",
   "http://localhost:3000",
-  "https://escola-r509.onrender.com"
+  "https://escola-r509.onrender.com",
+  "http://192.168.10.4:3000"
   
 ]
 
