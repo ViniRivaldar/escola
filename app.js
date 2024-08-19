@@ -12,7 +12,7 @@ import tokenRoutes from './src/routes/TokenRoutes.js'
 import alunoRoutes from './src/routes/AlunoRoutes.js'
 import FotoRoutes from './src/routes/FotoRoutes.js'
 
-import './src/database/index.js' 
+import './src/database/index.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,7 +22,7 @@ const whiteList = [
   "http://localhost:3000",
   "https://escola-r509.onrender.com",
   "http://192.168.10.4:3000"
-  
+
 ]
 
 const corsOptions = {
@@ -47,11 +47,10 @@ class App{
 
   middleware(){
     this.app.use(cors(corsOptions))
-    // this.app.use(cors())
     this.app.use(helmet())
     this.app.use(express.urlencoded({extended:true}))
     this.app.use(express.json())
-    this.app.use('/images', express.static(resolve(__dirname, 'uploads', 'images')))
+    // this.app.use('/images', express.static(resolve(__dirname, 'uploads', 'images')))
   }
 
   routes(){
