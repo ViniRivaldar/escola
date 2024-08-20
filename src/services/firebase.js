@@ -34,7 +34,7 @@ export const uploadImage = (req,res,next)=>{
 
       await file.makePublic()
 
-      req.file.firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/${nomeDoArquivo}`
+      req.file.firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${BUCKET}/o/${encodeURIComponent(nomeDoArquivo)}?alt=media`
 
       next()
   })
